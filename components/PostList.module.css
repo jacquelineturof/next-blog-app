@@ -1,0 +1,98 @@
+.PostList {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Post {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    height: 20%;
+    justify-content: space-around;
+    border-bottom: .5px solid #ccc;
+}
+
+.PostInfoRow {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin-left: 2rem;
+}
+
+.PostTitle {
+    margin: 0;
+    margin-left: 2rem;
+    font-size: 3rem;
+}
+
+.PostDate {
+    font-weight: 100;
+}
+
+.PostCommentsIcon,
+.PostCommentCount {
+    color: #aa4465;
+    margin-right: .5rem;
+}
+
+.FullScreenPost {
+    height: 90%;
+    width: 90%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: white;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PostContent {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 90%;
+    overflow: auto;
+}
+
+.PostContentTitle {
+    font-size: 2.5rem;
+}
+
+.Comments {
+    height: 30%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.Comment {
+    display: flex;
+    flex-direction: column;
+    border-bottom: .5px solid #ccc;
+}
+
+.CommentInfoRow {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.CommentUser {
+    font-weight: 700;
+}
+
+.Label {
+    font-weight: 400;
+}
+
+.CommentDate {
+    font-weight: 200;
+}
