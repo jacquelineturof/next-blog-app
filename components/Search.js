@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import Input from './UI/Input'
 
-import classes from './Search.module.css'
+import * as actions from '../store/actions'
 
 const Search = () => {
+    const dispatch = useDispatch()
     /*
         INPUT STATE
     */
@@ -24,10 +26,16 @@ const Search = () => {
             package: 'fal'
         },
         value: query,
-        changed: e => setQuery(e.target.value)
+        changed: e => onChange(e)
     }
 
-    return <Input { ...SEARCH_CONFIG } />
+    const onChange = e => {
+        e.preventDefault()
+        setQuery(e.target.value)
+        dispatch(actions.setQuery(query))
+    }
+
+    return  <Input { ...SEARCH_CONFIG } />
 }
 
 export default Search

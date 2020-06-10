@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 import Backdrop from './UI/Backdrop'
+import Button from './UI/Button'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -69,39 +71,73 @@ const Post = ({ title, comments, date, clicked }) => (
     </div>
 )
 
-const FullScreenPost = ({ post }) => (
-    <div className = { classes.FullScreenPost }>
-        <div className = { classes.PostContent }>
+const FullScreenPost = ({ post, showComments, setShowComments }) => {
+    let content = (
+        <div className = { classes.Content }>
             <h1 className = { classes.PostContentTitle }>{ post.title }</h1>
             { 
                 post.body.split('\n').map((item, i) => 
                     <p key={i} className = { classes.Paragraph}>{item}</p>)
             }
         </div>
-        <div className = { classes.Comments }>
-            <h5 className = { classes.Label }>Comments</h5>
-            { post.comments.map(comment => 
-                <Comment key = { comment.id } comment = { comment } />)}
+    )
+
+    if (showComments) {
+        content = (
+            <div className = { classes.Content }>
+                <h5 className = { classes.Label }>Comments</h5>
+                { post.comments.map(comment => 
+                    <Comment key = { comment.id } comment = { comment } />)}
+            </div>
+        )
+    }
+
+    return (
+        <div className = { classes.FullScreenPost }>
+            { content }
+            <div className = { classes.Comments }>
+                <Button 
+                    clicked = { setShowComments }
+                    type = "Primary">
+                    { showComments ? 'Back To Post' : 'Show Comments' }
+                </Button>
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
 const PostList = () => {
     const [ currentPost, setCurrentPost ] = useState(null)
+    const [ showComments, setShowComments ] = useState(false)
     
+    const query = useSelector(state => state.query.queryTerm)
+    const queryLowerCase = query.toLowerCase()
+    const currentPostList = query.length !== 0 
+        ? POSTS.filter(post => post.title.toLowerCase().includes(queryLowerCase))
+        : POSTS
+
     return (
         <section className = { classes.PostList }>
             <Backdrop 
                 show = { currentPost !== null } 
                 clicked = { () => setCurrentPost(null)} />
-            { currentPost !== null ? <FullScreenPost post = { currentPost } /> : null }
-            { POSTS.map(post => (
+            { 
+                currentPost !== null 
+                    ? (
+                        <FullScreenPost 
+                            post = { currentPost }
+                            showComments = { showComments }
+                            setShowComments = { () => setShowComments(!showComments) } />
+                    ) 
+                    : null 
+            }
+            { currentPostList.map(post => (
                 <Post
                     clicked = { () => setCurrentPost(post) } 
-                    key = { post.index }
+                    key = { post.id }
                     title = { post.title }
                     comments = { post.comments }
-                    date = { post.date }  />
+                    date = { post.date } />
             ))}
         </section>
     )

@@ -1,0 +1,20 @@
+.Btn {
+    height: 50px;
+    outline: none;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
+.Primary {
+    width: 200px;
+    background-color: #aa4465;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.Small {
+    background-color: transparent;
+    text-transform: uppercase;
+}
