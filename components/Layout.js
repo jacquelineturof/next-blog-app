@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import Menu from './UI/Menu'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const styles = {
@@ -20,11 +22,15 @@ const styles = {
 }
 
 const Layout = ({ children }) => {
+    const [ showMenu, setShowMenu ] = useState(false)
+
     return (
         <section style = { styles.container }>
+            { showMenu ? <Menu setShowMenu = { setShowMenu } /> : null }
              <FontAwesomeIcon
                 icon = { [ 'fal', 'bars' ] } 
-                style = { styles.icon } />
+                style = { styles.icon }
+                onClick = { () => setShowMenu(true) } />
             { children }
         </section>
     )

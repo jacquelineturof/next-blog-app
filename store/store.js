@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
 import queryReducer from './reducers/query'
+import notificationReducer from './reducers/notification'
+import authReducer from './reducers/auth'
 
 // create your reducer
 const mainReducer = (state = {tick: 'init'}, action) => {
@@ -20,7 +22,9 @@ const mainReducer = (state = {tick: 'init'}, action) => {
 
 const rootReducer = combineReducers({
     main: mainReducer,
-    query: queryReducer
+    query: queryReducer,
+    notification: notificationReducer,
+    auth: authReducer
 })
 
 // create a makeStore function

@@ -11,11 +11,18 @@ const styles = {
     }
 }
 
-const Index = () => (
+const Index = ({ posts }) => (
     <div style = { styles.container }>
         <Header />
-        <PostList />
+        <PostList posts = { posts } />
     </div>
 )
 
+Index.getInitialProps = async ctx => {
+    const res = await fetch("http://localhost:3001/posts")
+    const json = await res.json()
+    return { posts: json.posts }
+}
+
 export default Index
+

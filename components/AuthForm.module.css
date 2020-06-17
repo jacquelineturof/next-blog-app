@@ -1,0 +1,52 @@
+.Form {
+    box-shadow: 0 5px 15px -5px #00000070;
+    width: 50%;
+    height: 80%;
+    border-radius: .6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Form,
+.Header,
+.InputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Header {
+    height: 20%;
+    justify-content: center;
+}
+
+.HeaderMain {
+    margin: 0;
+}
+
+.TagLine {
+    font-weight: 100;
+}
+
+.InputContainer {
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+
+.AuthProvidersContainer {
+    width: 50%;
+    height: 10%;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+}
+
+.LogoContainer {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.FacebookBlue {
+    background-color: #3B5998;
+}
