@@ -15,7 +15,7 @@
     "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
     "@fortawesome/pro-light-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "next": "^9.4.4",
     "next-redux-wrapper": "^6.0.2",
     "react": "^16.13.1",
